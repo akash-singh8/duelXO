@@ -25,3 +25,7 @@ main {
   max-width: 540px;
   width: 100vw;
 }
+
+.logo {
+  width: 120px;
+}
