@@ -1,0 +1,38 @@
+.option {
+  align-items: center;
+  border-radius: 18px;
+  background-color: rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  height: 160px;
+  letter-spacing: 0.5px;
+  padding: 8px 22px 8px 28px;
+  user-select: none;
+  width: 420px;
+  transition: all 0.15s ease-in;
+}
+
+.option img {
+  height: 100%;
+}
+
+.option p {
+  color: #b2d0e1;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.option h1 {
+  color: #8fd6ff;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.option:hover {
+  box-shadow: 0 1px 10px rgba(143, 214, 255, 0.4);
+}
+
+.option:active {
+  box-shadow: 0 1px 10px rgba(143, 214, 255, 0.5);
+}

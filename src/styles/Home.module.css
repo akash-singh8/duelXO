@@ -8,3 +8,12 @@
   max-width: 312px;
   width: 90%;
 }
+
+.options {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+  row-gap: 10px;
+  margin-bottom: 10px;
+}
