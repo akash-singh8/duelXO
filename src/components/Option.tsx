@@ -4,17 +4,21 @@ type OptionProps = {
   title: string;
   head: string;
   image: string;
+  child?: any;
 };
 
-const Option = ({ title, head, image }: OptionProps) => {
+const Option = ({ title, head, image, child }: OptionProps) => {
   return (
     <div className={style.option}>
-      <div>
-        <p>.{title}</p>
-        <h1>{head}</h1>
+      <div className={style.main}>
+        <div>
+          <p>.{title}</p>
+          <h1>{head}</h1>
+        </div>
+        <img src={image} alt="device" />
       </div>
 
-      <img src={image} alt="device" />
+      <div className={style.extra}>{child}</div>
     </div>
   );
 };
