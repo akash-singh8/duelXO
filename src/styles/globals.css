@@ -29,3 +29,7 @@ main {
 .logo {
   width: 120px;
 }
+
+.link {
+  text-decoration: none;
+}

@@ -1,5 +1,6 @@
 import style from "@/styles/Home.module.css";
 import Option from "@/components/Option";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -9,11 +10,13 @@ export default function Home() {
       <img src="raw_xo.png" alt="tic tac toe" className={style.rawxo} />
 
       <div className={style.options}>
-        <Option
-          title={"PLAY ON"}
-          head={"SAME DEVICE"}
-          image={"/samedevice.png"}
-        />
+        <Link href={"/play"} className="link">
+          <Option
+            title={"PLAY ON"}
+            head={"SAME DEVICE"}
+            image={"/samedevice.png"}
+          />
+        </Link>
         <Option
           title={"PLAY"}
           head={"MULTIPLAYER"}
