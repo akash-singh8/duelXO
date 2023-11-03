@@ -38,71 +38,14 @@
   font-weight: 600;
 }
 
-.extra {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  flex: 5;
-  justify-content: space-evenly;
-  padding-bottom: 12px;
-  display: none;
-  width: 100%;
-  z-index: 10;
-}
-
-.extra > div {
-  align-items: center;
-  border: 2px solid #616161;
-  border-radius: 20px;
-  display: flex;
-  justify-content: space-between;
-  padding: 13px 22px;
-  width: 80%;
-}
-
-.extra input,
-.extra button {
-  border: none;
-  background-color: transparent;
-  font-family: "Inter", sans-serif;
-  font-size: 15px;
-  outline: none;
-}
-
-.extra input {
-  color: white;
-}
-
-.extra button {
-  cursor: pointer;
-  font-weight: 500;
-  color: #ffbb48;
-}
-
-.extra > button {
-  border-radius: 17px;
-  border: 2px solid #616161;
-  background-color: rgba(255, 255, 255, 0.04);
-  color: #8fd6ff;
-  padding: 10px 28px;
-}
-
-.extra button:hover {
-  opacity: 0.9;
-}
-
-.extra button:active {
-  opacity: 0.8;
-}
-
-.extra p {
-  font-size: 12px;
-}
-
 .option:hover {
   box-shadow: 0 1px 10px rgba(143, 214, 255, 0.4);
 }
 
 .option:active {
   box-shadow: 0 1px 10px rgba(143, 214, 255, 0.5);
+}
+
+.child {
+  display: none;
 }

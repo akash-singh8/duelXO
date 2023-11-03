@@ -2,21 +2,7 @@ import style from "@/styles/Home.module.css";
 import Option from "@/components/Option";
 import Link from "next/link";
 import { useEffect } from "react";
-
-function MultiPlayer() {
-  return (
-    <>
-      <div>
-        <input type="text" placeholder="enter id to join" />
-        <button>join</button>
-      </div>
-
-      <p>--- OR ---</p>
-
-      <button>Create Room</button>
-    </>
-  );
-}
+import MultiPlayer from "@/components/MultiPlayer";
 
 export default function Home() {
   useEffect(() => {
