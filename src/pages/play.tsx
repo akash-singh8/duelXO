@@ -3,6 +3,7 @@ import { useEffect } from "react";
 
 const play = () => {
   useEffect(() => {
+    let timer: any = undefined;
     let currMove = false;
     const game = [
       [-1, -1, -1],
@@ -13,6 +14,9 @@ const play = () => {
     const items = document.querySelectorAll(`.${style.box}`);
     const turn = document.querySelector(
       `.${style.turn} h2`
+    ) as HTMLHeadingElement;
+    const time = document.querySelector(
+      `.${style.time} h2`
     ) as HTMLHeadingElement;
 
     for (let i = 0; i < 9; i++) {
@@ -53,12 +57,27 @@ const play = () => {
           return;
         }
 
+        if (timer) {
+          clearInterval(timer);
+          time.innerText = "00:08";
+        }
+
+        let timeLimit = 8;
+        timer = setInterval(() => {
+          time.innerText = `00:0${--timeLimit}`;
+          if (timeLimit === 0) {
+            clearInterval(timer);
+          }
+        }, 1000);
+
         if (currMove) {
+          time.style.color = "#ffbb48";
           item.style.color = "#58C2FF";
           item.innerText = "X";
           turn.innerText = "O's";
           turn.style.color = "#ffbb48";
         } else {
+          time.style.color = "#58C2FF";
           item.style.color = "#ffbb48";
           item.innerText = "O";
           turn.innerText = "X's";

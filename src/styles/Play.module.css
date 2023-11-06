@@ -10,9 +10,13 @@
   row-gap: 2px;
 }
 
-.turn h2,
-.time h2 {
+.turn h2 {
   color: #ffbb48;
+  font-weight: 600;
+}
+
+.time h2 {
+  color: #58c2ff;
   font-weight: 600;
 }
 
