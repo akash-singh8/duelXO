@@ -11,6 +11,9 @@ const play = () => {
     ];
 
     const items = document.querySelectorAll(`.${style.box}`);
+    const turn = document.querySelector(
+      `.${style.turn} h2`
+    ) as HTMLHeadingElement;
 
     for (let i = 0; i < 9; i++) {
       const item = items[i] as HTMLSpanElement;
@@ -18,22 +21,48 @@ const play = () => {
       const row = parseInt(position[0]);
       const col = parseInt(position[1]);
 
+      item.addEventListener("mouseenter", () => {
+        if (game[row][col] !== -1) return;
+
+        if (currMove) {
+          item.style.color = "rgba(87, 193, 255, 0.5)";
+          item.innerText = "X";
+        } else {
+          item.style.color = "rgba(255, 188, 71, 0.5)";
+          item.innerText = "O";
+        }
+      });
+
+      item.addEventListener("mouseout", () => {
+        if (game[row][col] !== -1) return;
+
+        if (currMove) {
+          item.innerText = "";
+        } else {
+          item.innerText = "";
+        }
+      });
+
       item.addEventListener("click", () => {
         if (game[row][col] !== -1) {
           item.style.backgroundColor = "rgba(255, 82, 82, 0.28)";
 
           setTimeout(() => {
             item.style.backgroundColor = "transparent";
-          }, 400);
+          }, 280);
           return;
         }
 
         if (currMove) {
           item.style.color = "#58C2FF";
           item.innerText = "X";
+          turn.innerText = "O's";
+          turn.style.color = "#ffbb48";
         } else {
           item.style.color = "#ffbb48";
           item.innerText = "O";
+          turn.innerText = "X's";
+          turn.style.color = "#58C2FF";
         }
 
         item.style.backgroundColor = "transparent";
