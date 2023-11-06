@@ -50,20 +50,27 @@
   border-radius: 8px;
   display: grid;
   grid-template-columns: auto auto auto;
-  height: 340px;
+  height: 345px;
   width: 360px;
   overflow: hidden;
 }
 
 .box {
+  align-items: center;
   border: 2px solid rgba(255, 255, 255, 0.12);
   cursor: pointer;
-  display: inline-block;
-  transition: all 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  font-size: 88px;
+  justify-content: center;
+  height: 115px;
+  width: 120px;
+  user-select: none;
+  transition: background-color 0.25s ease-in-out;
 }
 
 .box:hover {
-  background-color: rgba(255, 255, 255, 0.02);
+  background-color: rgba(255, 255, 255, 0.04);
 }
 
 .top {
