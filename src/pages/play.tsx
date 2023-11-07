@@ -1,7 +1,10 @@
+import Winner from "@/components/Winner";
 import style from "@/styles/Play.module.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const play = () => {
+  const [winner, setWinner] = useState("");
+
   useEffect(() => {
     let timer: any = undefined;
     let currMove = false;
@@ -66,6 +69,7 @@ const play = () => {
         timer = setInterval(() => {
           time.innerText = `00:0${--timeLimit}`;
           if (timeLimit === 0) {
+            setWinner(currMove ? "O" : "X");
             clearInterval(timer);
           }
         }, 1000);
@@ -95,6 +99,8 @@ const play = () => {
 
   return (
     <main className={style.play}>
+      {winner ? <Winner winner={winner} /> : ""}
+
       <img src="/logo.svg" alt="duelxo" className="logo" />
 
       <div className={style.turn}>

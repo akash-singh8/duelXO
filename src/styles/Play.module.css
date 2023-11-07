@@ -1,5 +1,6 @@
 .play {
   justify-content: space-around;
+  position: relative;
 }
 
 .turn,
