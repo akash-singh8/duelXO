@@ -5,7 +5,55 @@ import { useEffect, useState } from "react";
 const play = () => {
   const [winner, setWinner] = useState("");
 
+  const checkWinner = (game: number[][], currRow: number, currCol: number) => {
+    const currMove = game[currRow][currCol];
+    const x = game.length;
+    let flag = true;
+
+    // check for the first diagonal
+    if (currRow === currCol) {
+      for (let i = 0; i < x; i++) {
+        if (game[i][i] !== currMove) {
+          flag = false;
+          break;
+        }
+      }
+      if (flag) return true;
+    }
+
+    // check for the other diagonal
+    if (currRow + currCol === x - 1) {
+      flag = true;
+      for (let i = 0; i < 3; i++) {
+        if (game[2 - i][i] !== currMove) {
+          flag = false;
+          break;
+        }
+      }
+      if (flag) return true;
+    }
+
+    // check for rows
+    flag = true;
+    for (let col = 0; col < x; col++) {
+      if (game[currRow][col] !== currMove) {
+        flag = false;
+        break;
+      }
+    }
+    if (flag) return true;
+
+    // check for columns
+    for (let row = 0; row < x; row++) {
+      if (game[row][currCol] !== currMove) {
+        return false;
+      }
+    }
+    return true;
+  };
+
   useEffect(() => {
+    let steps = 0;
     let timer: any = undefined;
     let currMove = false;
     const game = [
@@ -60,6 +108,8 @@ const play = () => {
           return;
         }
 
+        steps += 1;
+
         if (timer) {
           clearInterval(timer);
           time.innerText = "00:08";
@@ -92,6 +142,16 @@ const play = () => {
         item.style.cursor = "not-allowed";
 
         game[row][col] = currMove ? 1 : 0;
+
+        if (steps > 4) {
+          const isWinner = checkWinner(game, row, col);
+
+          if (isWinner) {
+            clearInterval(timer);
+            setWinner(currMove ? "X" : "O");
+          }
+        }
+
         currMove = !currMove;
       });
     }
