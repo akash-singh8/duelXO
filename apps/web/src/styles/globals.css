@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  align-items: center;
+  background-color: #212121;
+  display: flex;
+  font-family: "Inter", sans-serif;
+  justify-content: center;
+  height: 100vh;
+}
+
+main {
+  align-items: center;
+  background-color: #313131;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  height: 95vh;
+  max-height: 880px;
+  padding: 18px;
+  max-width: 500px;
+  width: 100vw;
+}
+
+.logo {
+  width: 120px;
+}
+
+.link {
+  text-decoration: none;
+}
