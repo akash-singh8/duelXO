@@ -10,5 +10,14 @@
     "server"
   ],
   "author": "Akash Singh",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "ws": "^8.14.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/ws": "^8.5.9",
+    "typescript": "^5.2.2"
+  }
 }
