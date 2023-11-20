@@ -12,7 +12,10 @@ app.get("/", (req, res) => {
 });
 
 type wsClient = {
-  [key: number]: WebSocket;
+  [key: number]: {
+    room: string;
+    ws: WebSocket;
+  };
 };
 
 let wsConnections = 0;
@@ -20,16 +23,30 @@ const wsClients: wsClient = {};
 
 wss.on("connection", (ws, req) => {
   const clientId = wsConnections++;
-  console.log("Client connected", clientId);
+  const url = new URL(req.url!, "http://localhost:3053");
+  const roomId = url.searchParams.get("room");
 
-  wsClients[clientId] = ws;
+  if (!roomId) {
+    ws.send("Invalid request: required room id");
+    ws.close();
+    return;
+  }
+  
+  console.log(`Client ${clientId} joined room: ${roomId}`);
+
+  wsClients[clientId] = {
+    room: roomId,
+    ws: ws,
+  };
 
   ws.on("message", (message) => {
     const data = message.toString();
     console.log("Received Message :", data);
 
     Object.values(wsClients).forEach((client) => {
-      client.send(data);
+      if (client.room === roomId) {
+        client.ws.send(data);
+      }
     });
   });
 
