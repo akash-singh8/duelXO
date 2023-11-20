@@ -12,17 +12,16 @@ app.get("/", (req, res) => {
 });
 
 type wsClient = {
-  [key: number]: {
-    room: string;
-    ws: WebSocket;
+  [key: string]: {
+    occupied: boolean;
+    client1: WebSocket;
+    client2?: WebSocket;
   };
 };
 
-let wsConnections = 0;
 const wsClients: wsClient = {};
 
 wss.on("connection", (ws, req) => {
-  const clientId = wsConnections++;
   const url = new URL(req.url!, "http://localhost:3053");
   const roomId = url.searchParams.get("room");
 
@@ -31,28 +30,46 @@ wss.on("connection", (ws, req) => {
     ws.close();
     return;
   }
-  
-  console.log(`Client ${clientId} joined room: ${roomId}`);
+  1;
 
-  wsClients[clientId] = {
-    room: roomId,
-    ws: ws,
-  };
+  let partners = wsClients[roomId];
+  const clientNumber = partners ? 2 : 1;
+
+  console.log(`Client ${clientNumber} joined room: ${roomId}`);
+
+  if (partners) {
+    if (partners.occupied) {
+      ws.send("Invalid room id, room already occupied!");
+      ws.close();
+      return;
+    }
+
+    partners.client2 = ws;
+    partners.occupied = true;
+  } else {
+    wsClients[roomId] = {
+      occupied: false,
+      client1: ws,
+    };
+    partners = wsClients[roomId];
+  }
 
   ws.on("message", (message) => {
     const data = message.toString();
-    console.log("Received Message :", data);
 
-    Object.values(wsClients).forEach((client) => {
-      if (client.room === roomId) {
-        client.ws.send(data);
-      }
-    });
+    if (!partners.occupied) {
+      ws.send("Invalid request, can't find partner!");
+      return;
+    }
+
+    (clientNumber === 1 ? partners.client2 : partners.client1)!.send(data);
   });
 
   ws.on("close", () => {
-    console.log("Client disconnected", clientId);
-    delete wsClients[clientId];
+    console.log(`Client  ${clientNumber} disconnected`);
+    (clientNumber === 1 ? partners.client2 : partners.client1)!.close();
+
+    delete wsClients[roomId];
   });
 });
 
