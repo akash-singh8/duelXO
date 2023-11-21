@@ -5,8 +5,11 @@
   display: flex;
   justify-content: center;
   position: absolute;
-  width: 100%;
+  right: 0;
+  left: 0;
   height: 100%;
+  padding-bottom: 20px;
+  z-index: 10;
 }
 
 .pop {
