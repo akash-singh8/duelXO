@@ -1,5 +1,5 @@
 import style from "@/styles/Play.module.css";
-import Game, { checkWinner } from "../../components/Game";
+import Game, { checkWinner } from "../components/Game";
 import { Winner } from "ui/components";
 import { useState } from "react";
 
