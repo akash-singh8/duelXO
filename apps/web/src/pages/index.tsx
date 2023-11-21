@@ -2,7 +2,7 @@ import style from "@/styles/Home.module.css";
 import { Option } from "ui/components";
 import Link from "next/link";
 import { useEffect } from "react";
-import MultiPlayer from "@/components/MultiPlayer";
+import MultiPlayer from "../components/MultiPlayer";
 
 export default function Home() {
   useEffect(() => {
