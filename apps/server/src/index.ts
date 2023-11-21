@@ -67,7 +67,7 @@ wss.on("connection", (ws, req) => {
 
   ws.on("close", () => {
     console.log(`Client  ${clientNumber} disconnected`);
-    (clientNumber === 1 ? partners.client2 : partners.client1)!.close();
+    (clientNumber === 1 ? partners.client2 : partners.client1)?.close();
 
     delete wsClients[roomId];
   });
