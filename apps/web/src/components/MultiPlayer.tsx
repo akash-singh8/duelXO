@@ -1,19 +1,6 @@
 import style from "@/styles/Multiplayer.module.css";
 
-function MultiPlayer() {
-  function generateKey() {
-    const characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    let uniqueId = "";
-
-    for (let i = 0; i < 12; i++) {
-      const randomIndex = Math.floor(Math.random() * 62);
-      uniqueId += characters[randomIndex];
-    }
-
-    return uniqueId;
-  }
-
+const MultiPlayer = () => {
   function createRoom() {
     const roomId = generateKey();
 
@@ -52,6 +39,19 @@ function MultiPlayer() {
       <button onClick={createRoom}>Create Room</button>
     </div>
   );
-}
+};
+
+const generateKey = () => {
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let uniqueId = "";
+
+  for (let i = 0; i < 8; i++) {
+    const randomIndex = Math.floor(Math.random() * 62);
+    uniqueId += characters[randomIndex];
+  }
+
+  return uniqueId;
+};
 
 export default MultiPlayer;
