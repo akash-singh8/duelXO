@@ -27,16 +27,48 @@ const MultiPlayer = () => {
     mainBtn.innerText = "START";
   }
 
+  const roomIdHandler = () => {
+    const inputBtn = document.querySelector(
+      `.${style.detail} button`
+    ) as HTMLButtonElement;
+    const input = document.querySelector(
+      `.${style.detail} input`
+    ) as HTMLInputElement;
+
+    if (inputBtn.innerText !== "join") {
+      inputBtn.innerText = "copied!";
+      navigator.clipboard.writeText(input.value);
+    } else {
+      if (input.value.length !== 8) {
+        alert("Invalid room id!");
+      } else {
+        console.log("joining room...");
+      }
+    }
+  };
+
+  const roomHandler = () => {
+    const mainBtn = document.querySelector(
+      `.${style.container} > button`
+    ) as HTMLButtonElement;
+
+    if (mainBtn.innerText === "START") {
+      console.log("starting game...");
+    } else {
+      createRoom();
+    }
+  };
+
   return (
     <div className={style.container}>
       <div className={style.detail}>
         <input type="text" placeholder="enter id to join" />
-        <button>join</button>
+        <button onClick={roomIdHandler}>join</button>
       </div>
 
       <p>--- OR ---</p>
 
-      <button onClick={createRoom}>Create Room</button>
+      <button onClick={roomHandler}>Create Room</button>
     </div>
   );
 };
