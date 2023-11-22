@@ -49,3 +49,79 @@
 .child {
   display: none;
 }
+
+@media only screen and (max-width: 880px) {
+  .option {
+    height: 148px;
+    width: 380px;
+  }
+
+  .main h1 {
+    font-size: 24px;
+  }
+
+  .main p {
+    font-size: 13px;
+  }
+
+  .main img {
+    max-height: 128px;
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  .option {
+    height: 144px;
+    width: 358px;
+  }
+
+  .main h1 {
+    font-size: 23px;
+  }
+
+  .main img {
+    max-height: 120px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .option {
+    height: 160px;
+    width: 88vw;
+    max-width: 400px;
+  }
+
+  .main h1 {
+    font-size: 24px;
+  }
+
+  .main img {
+    max-height: 128px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .option {
+    width: 88vw;
+    padding: 8px 20px 8px 25px;
+  }
+
+  .main p {
+    font-size: 12px;
+  }
+
+  .main h1 {
+    font-size: 22px;
+    width: 100px;
+  }
+
+  .main img {
+    max-height: 124px;
+  }
+}
+
+@media screen and (max-height: 800px) {
+  .option {
+    margin-bottom: 28px;
+  }
+}

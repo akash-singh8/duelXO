@@ -27,3 +27,38 @@
   cursor: default;
   height: 100%;
 }
+
+@media only screen and (max-width: 880px) {
+  .rawxo {
+    max-width: 298px;
+  }
+
+  .options {
+    margin-bottom: 2px;
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  .rawxo {
+    max-width: 268px;
+    margin-left: -40px;
+  }
+
+  .options {
+    row-gap: 0;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .rawxo {
+    max-width: 308px;
+    margin-top: 58px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .rawxo {
+    max-width: 288px;
+    margin-left: -30px;
+  }
+}
