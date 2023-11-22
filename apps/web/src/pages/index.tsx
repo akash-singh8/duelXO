@@ -41,7 +41,7 @@ export default function Home() {
         <div className="multi">
           <Option
             title={"PLAY"}
-            head={"MULTIPLAYER"}
+            head={"MULTI PLAYER"}
             image={"/multiplayer.png"}
             child={<MultiPlayer />}
           />
