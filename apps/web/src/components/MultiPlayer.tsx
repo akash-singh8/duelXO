@@ -7,8 +7,6 @@ const MultiPlayer = () => {
   function createRoom() {
     const roomId = generateKey();
 
-    // send a ws request to join the room
-
     const input = document.querySelector(
       `.${style.detail} input`
     ) as HTMLInputElement;
@@ -45,8 +43,7 @@ const MultiPlayer = () => {
       if (input.value.length !== 8) {
         alert("Invalid room id!");
       } else {
-        console.log("joining room...");
-        router.push(`multiplay?room=${input.value}`);
+        router.push(`multiplayer?room=${input.value}`);
       }
     }
   };
@@ -61,7 +58,7 @@ const MultiPlayer = () => {
         `.${style.detail} input`
       ) as HTMLInputElement;
 
-      router.push(`multiplay?room=${input.value}`);
+      router.push(`multiplayer?room=${input.value}`);
     } else {
       createRoom();
     }
