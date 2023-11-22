@@ -93,3 +93,38 @@
 .left {
   border-left: none;
 }
+
+@media only screen and (max-width: 680px) {
+  .play {
+    height: 94vh;
+    max-height: 880px;
+    padding: 0 40px;
+    width: 100%;
+  }
+
+  .xo {
+    height: 315px;
+    width: 330px;
+  }
+
+  .box {
+    height: 105px;
+    width: 110px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .play {
+    padding: 0 18px;
+  }
+
+  .xo {
+    height: 300px;
+    width: 90vw;
+  }
+
+  .box {
+    height: 100px;
+    width: 30vw;
+  }
+}
