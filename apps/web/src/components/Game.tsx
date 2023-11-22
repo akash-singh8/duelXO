@@ -42,12 +42,23 @@ const Game = (props: { gameHandler: any }) => {
         <p>TIME LEFT</p>
       </div>
 
-      <button className={style.restart}>Restart</button>
+      <button
+        className={style.restart}
+        onClick={() => {
+          window.location.reload();
+        }}
+      >
+        Restart
+      </button>
     </main>
   );
 };
 
-export const checkWinner = (game: number[][], currRow: number, currCol: number) => {
+export const checkWinner = (
+  game: number[][],
+  currRow: number,
+  currCol: number
+) => {
   const currMove = game[currRow][currCol];
   const x = game.length;
   let flag = true;
