@@ -1,6 +1,9 @@
 import style from "@/styles/Multiplayer.module.css";
+import { useRouter } from "next/router";
 
 const MultiPlayer = () => {
+  const router = useRouter();
+
   function createRoom() {
     const roomId = generateKey();
 
@@ -43,6 +46,7 @@ const MultiPlayer = () => {
         alert("Invalid room id!");
       } else {
         console.log("joining room...");
+        router.push(`multiplay?room=${input.value}`);
       }
     }
   };
@@ -53,7 +57,11 @@ const MultiPlayer = () => {
     ) as HTMLButtonElement;
 
     if (mainBtn.innerText === "START") {
-      console.log("starting game...");
+      const input = document.querySelector(
+        `.${style.detail} input`
+      ) as HTMLInputElement;
+
+      router.push(`multiplay?room=${input.value}`);
     } else {
       createRoom();
     }
