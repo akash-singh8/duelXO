@@ -38,9 +38,16 @@ const multiplay = ({ room }: { room: string }) => {
 
     ws.onmessage = (event) => {
       const data: {
+        status: number;
         row: number;
         col: number;
+        message: string;
       } = JSON.parse(event.data);
+
+      if (data.status !== 200) {
+        alert(data.message);
+        return;
+      }
 
       const item = document.querySelectorAll(`.${style.box}`)[
         data.row * 3 + data.col
