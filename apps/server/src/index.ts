@@ -26,7 +26,7 @@ wss.on("connection", (ws, req) => {
   const roomId = url.searchParams.get("room");
 
   if (!roomId) {
-    ws.send("Invalid request: required room id");
+    ws.send(JSON.stringify({ message: "Invalid request: required room id" }));
     ws.close();
     return;
   }
@@ -39,7 +39,9 @@ wss.on("connection", (ws, req) => {
 
   if (partners) {
     if (partners.occupied) {
-      ws.send("Invalid room id, room already occupied!");
+      ws.send(
+        JSON.stringify({ message: "Invalid room id, room already occupied!" })
+      );
       ws.close();
       return;
     }
@@ -58,7 +60,9 @@ wss.on("connection", (ws, req) => {
     const data = message.toString();
 
     if (!partners.occupied) {
-      ws.send("Invalid request, can't find partner!");
+      ws.send(
+        JSON.stringify({ message: "Invalid request, can't find partner!" })
+      );
       return;
     }
 
