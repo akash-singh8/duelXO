@@ -1,6 +1,7 @@
 import express from "express";
 import http from "http";
 import { WebSocketServer, WebSocket } from "ws";
+import { validMove } from "common/src";
 
 const app = express();
 const server = http.createServer(app);
@@ -65,8 +66,6 @@ wss.on("connection", (ws, req) => {
   }
 
   ws.on("message", (message) => {
-    const data = message.toString();
-
     if (!partners.occupied) {
       ws.send(
         JSON.stringify({
@@ -77,11 +76,36 @@ wss.on("connection", (ws, req) => {
       return;
     }
 
-    const newData = JSON.parse(data);
-    newData.status = 200;
-    (clientNumber === 1 ? partners.client2 : partners.client1)!.send(
-      JSON.stringify(newData)
-    );
+    try {
+      const data = JSON.parse(message.toString());
+      const isValidData = validMove.safeParse(data);
+
+      if (!isValidData.success) {
+        const error = {
+          status: 400,
+          message: "Invalid input data!",
+        };
+
+        ws.send(JSON.stringify({ error }));
+        return;
+      }
+
+      const newData = {
+        status: 200,
+        ...isValidData.data,
+      };
+
+      (clientNumber === 1 ? partners.client2 : partners.client1)!.send(
+        JSON.stringify(newData)
+      );
+    } catch (err) {
+      const error = {
+        status: 400,
+        message: "Invalid request message!",
+      };
+
+      ws.send(JSON.stringify({ error }));
+    }
   });
 
   ws.on("close", () => {
