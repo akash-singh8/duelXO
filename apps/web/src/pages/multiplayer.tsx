@@ -2,6 +2,7 @@ import style from "@/styles/Play.module.css";
 import Game, { checkWinner } from "../components/Game";
 import { Winner } from "ui/components";
 import { useEffect, useState } from "react";
+import { messageType } from "common/src";
 
 export const getServerSideProps = async ({ req }: any) => {
   const url = new URL(req.url, "http://localhost:3000");
@@ -37,23 +38,18 @@ const multiplay = ({ room }: { room: string }) => {
     };
 
     ws.onmessage = (event) => {
-      const data: {
-        status: number;
-        row: number;
-        col: number;
-        message: string;
-      } = JSON.parse(event.data);
+      const data: messageType = JSON.parse(event.data);
 
-      if (data.status !== 200) {
-        alert(data.message);
+      if (data.error.status !== 200) {
+        alert(data.error.message);
         return;
       }
 
       const item = document.querySelectorAll(`.${style.box}`)[
-        data.row * 3 + data.col
+        data.move.row * 3 + data.move.col
       ] as HTMLSpanElement;
 
-      updateGame(item, data.row, data.col);
+      updateGame(item, data.move.row, data.move.col);
       currPlayer = true;
     };
 

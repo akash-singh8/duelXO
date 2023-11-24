@@ -51,6 +51,9 @@ importers:
 
   apps/web:
     dependencies:
+      common:
+        specifier: workspace:*
+        version: link:../../packages/common
       next:
         specifier: 14.0.1
         version: 14.0.1(react-dom@18.2.0)(react@18.2.0)
