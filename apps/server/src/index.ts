@@ -91,8 +91,13 @@ wss.on("connection", (ws, req) => {
       }
 
       const newData = {
-        status: 200,
-        ...isValidData.data,
+        error: {
+          status: 200,
+          message: "NA",
+        },
+        move: {
+          ...isValidData.data,
+        },
       };
 
       (clientNumber === 1 ? partners.client2 : partners.client1)!.send(
