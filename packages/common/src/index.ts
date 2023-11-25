@@ -1,2 +1,2 @@
 export { validMove } from "./validation/gameMove";
-export { messageType } from "./types/message";
+export type { messageType } from "./types/message";
