@@ -1,81 +1,79 @@
-# Turborepo starter
+# <img src="https://github.com/akash-singh8/duelXO/assets/85285176/314da644-d415-4036-9474-32af7def5c29" alt="logo" width="180px">
 
-This is an official starter Turborepo.
+DuelXO is a modern and engaging Tic Tac Toe game that offers two exciting gameplay options:
 
-## Using this example
+1. **Play on the Same Device:**
+   - Players can enjoy a classic game of Tic Tac Toe on the same device, making it a perfect option for friends sitting together.
 
-Run the following command:
+2. **Multiplayer:**
+   - Create a room and invite a friend to join from a different device.
+   - Utilizes WebSockets to establish a real-time connection between players, making the multiplayer experience seamless and interactive.
 
-```sh
-npx create-turbo@latest
-```
 
-## What's inside?
+## Table of Contents
 
-This Turborepo includes the following packages/apps:
+- [Features and Tech](#features-and-tech)
+- [Gameplay](#gameplay)
+- [Getting Started](#getting-started)
+- [Contributing](#contributing)
+- [License](#license)
 
-### Apps and Packages
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
+## Features and Tech
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+- **Web App:**
+  - The web app is built using Next.js, providing a smooth and responsive user interface.
+  - Modern design crafted with Figma for an aesthetic look and feel.
 
-### Utilities
+- **Server:**
+  - Express is used as the server framework to handle HTTP requests.
+  - WebSockets are employed to create a persistent, bidirectional communication channel between players, ensuring real-time updates during gameplay.
 
-This Turborepo has some additional tools already setup for you:
+- **Optimized WebSocket Logic:**
+  - Efficient logic to manage and store WebSocket connections for players in the same room.
+  - Seamless synchronization of moves and updates for a lag-free multiplayer experience.
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
 
-### Build
+## Gameplay
 
-To build all apps and packages, run the following command:
+https://github.com/akash-singh8/duelXO/assets/85285176/5a61a5d4-5c0f-42d5-b081-5ed6feb33b12
 
-```
-cd my-turborepo
-pnpm build
-```
 
-### Develop
+## Getting Started
 
-To develop all apps and packages, run the following command:
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/akash-singh8/duelxo.git
+   cd duelxo
+   ```
 
-```
-cd my-turborepo
-pnpm dev
-```
+2. **Install Dependencies:**
+   ```bash
+   npm install -g pnpm
+   pnpm install
+   ```
 
-### Remote Caching
+3. **Run Apps:**
+   ```bash
+   pnpm run dev
+   ```
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+4. **Enjoy the game:**
+   - Web App: http://localhost:3000
+   - Server: http://localhost:3053
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
 
-```
-cd my-turborepo
-npx turbo login
-```
+## Contributing
+Contributions are welcome! If you'd like to enhance the game, fix bugs, or add new features, please follow these steps:
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+1. Fork the repository.
+2. Create a new branch: git checkout -b feature-name.
+3. Make your changes and commit them: git commit -m 'Add new feature'.
+4. Push to the branch: git push origin feature-name.
+5. Submit a pull request.
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
 
-```
-npx turbo link
-```
+## License
 
-## Useful Links
+This project is licensed under the [MIT License](LICENSE)
 
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
