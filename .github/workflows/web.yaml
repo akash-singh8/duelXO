@@ -31,4 +31,4 @@ jobs:
           chmod 600 ssh_key
           mkdir -p ~/.ssh
           echo "$KNOWN_HOSTS" > ~/.ssh/known_hosts
-          ssh -t -i ssh_key devAkash@172.172.243.144 "sudo bash ~/deploy-web.sh"
+          ssh -t -i ssh_key devAkash@172.174.160.242 "sudo bash ~/deploy-web.sh"
