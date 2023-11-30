@@ -9,9 +9,9 @@ export const Winner = ({ winner }: WinnerProps) => {
     <div className="winner">
       <div className="pop">
         <h2 style={{ color: winner === "X" ? "#58c2ff" : "#ffbb48" }}>
-          {winner}
+          {winner === "N" ? "Draw" : winner}
         </h2>
-        <p>wins</p>
+        <p>{winner === "N" ? "_______________" : "wins"}</p>
 
         <div>
           <button

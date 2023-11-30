@@ -88,16 +88,6 @@ const multiplay = ({ room }: { room: string }) => {
     game[row][col] = currMove ? 1 : 0;
     steps += 1;
 
-    if (steps > 4) {
-      const isWinner = checkWinner(game, row, col);
-
-      if (isWinner) {
-        clearInterval(timer);
-        setWinner(currMove ? "X" : "O");
-        return;
-      }
-    }
-
     if (timer) {
       clearInterval(timer);
       time.innerText = "00:08";
@@ -112,6 +102,21 @@ const multiplay = ({ room }: { room: string }) => {
         clearInterval(timer);
       }
     }, 1000);
+
+    if (steps > 4) {
+      const isWinner = checkWinner(game, row, col);
+
+      if (isWinner) {
+        clearInterval(timer);
+        setWinner(currMove ? "X" : "O");
+        return;
+      }
+    }
+
+    if (steps === 9) {
+      setWinner("N");
+      clearInterval(timer);
+    }
 
     currMove = !currMove;
   };

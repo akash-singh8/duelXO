@@ -106,6 +106,12 @@ const index = () => {
           }
         }
 
+        if (steps === 9) {
+          // this is the last step and no winner is declared yet, so we'll set the match as Draw
+          setWinner("N");
+          clearInterval(timer);
+        }
+
         currMove = !currMove;
       });
     }
