@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { messageType } from "common/src";
 
 export const getServerSideProps = async ({ req }: any) => {
-  const url = new URL(req.url, "http://localhost:3000");
+  const url = new URL(req.url, process.env.APP_BASE_URL);
   const room = url.searchParams.get("room");
 
   return {
@@ -31,7 +31,7 @@ const multiplay = ({ room }: { room: string }) => {
   let timer: any = undefined;
 
   useEffect(() => {
-    ws = new WebSocket(`ws://localhost:3053?room=${room}`);
+    ws = new WebSocket(`${process.env.WebSocket_BASE_URL}?room=${room}`);
 
     ws.onopen = () => {
       console.log("Connected to websocket server");
