@@ -2,7 +2,9 @@ import express from "express";
 import http from "http";
 import { WebSocketServer, WebSocket } from "ws";
 import { validMove } from "common/src";
+import { config } from "dotenv";
 
+config();
 const app = express();
 const server = http.createServer(app);
 
@@ -23,7 +25,7 @@ type wsClient = {
 const wsClients: wsClient = {};
 
 wss.on("connection", (ws, req) => {
-  const url = new URL(req.url!, "http://localhost:3053");
+  const url = new URL(req.url!, `${process.env.SERVER_BASE_URL}`);
   const roomId = url.searchParams.get("room");
 
   if (!roomId) {
@@ -122,5 +124,5 @@ wss.on("connection", (ws, req) => {
 });
 
 server.listen(3053, () => {
-  console.log("Server running at  -   http://localhost:3053");
+  console.log(`Server running at  -   ${process.env.SERVER_BASE_URL}`);
 });
