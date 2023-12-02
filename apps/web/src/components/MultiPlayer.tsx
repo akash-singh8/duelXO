@@ -28,7 +28,7 @@ const MultiPlayer = () => {
     mainBtn.innerText = "START";
   }
 
-  const roomIdHandler = () => {
+  const roomIdHandler = async () => {
     const inputBtn = document.querySelector(
       `.${style.detail} button`
     ) as HTMLButtonElement;
@@ -37,8 +37,15 @@ const MultiPlayer = () => {
     ) as HTMLInputElement;
 
     if (inputBtn.innerText !== "join") {
-      inputBtn.innerText = "copied!";
-      navigator.clipboard.writeText(input.value);
+      try {
+        input.select();
+        input.setSelectionRange(0, 8, "forward");
+        await navigator.clipboard.writeText(input.value);
+        inputBtn.innerText = "copied!";
+      } catch (err) {
+        console.error(err);
+        alert("Can't copy room id!\nPlease try to select and copy.");
+      }
     } else {
       if (input.value.length !== 8) {
         alert("Invalid room id!");
